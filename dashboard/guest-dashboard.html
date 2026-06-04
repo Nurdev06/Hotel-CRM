@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GrandStay — Guest Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-mode guest-mode">
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+
+  <!-- Main guest dashboard -->
+  <div id="guest-dashboard" class="guest-dashboard">
+
+    <!-- Welcome card -->
+    <div class="guest-welcome-card">
+      <div class="guest-welcome-info">
+        <h3 id="gw-title">Xush kelibsiz!</h3>
+        <p id="gw-sub">Xona — · —</p>
+      </div>
+      <div class="guest-charges">
+        <div class="charge-amount" id="gw-charges">$0.00</div>
+        <div class="charge-label">Xizmat hisob</div>
+      </div>
+    </div>
+
+    <!-- Room Service Menu -->
+    <div class="dash-section">
+      <div class="dash-section-header">
+        <h2>🍽️ Room Service menyusi</h2>
+        <button id="order-btn" class="btn-primary" disabled>📦 Buyurtma berish</button>
+      </div>
+      <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.75rem">Buyurtma qilish uchun mahsulotlarni tanlang:</p>
+      <div class="menu-grid" id="menu-grid"></div>
+    </div>
+
+    <!-- My Orders -->
+    <div class="dash-section">
+      <div class="dash-section-header">
+        <h2>📋 Mening buyurtmalarim</h2>
+        <span class="badge" id="my-orders-count">0 ta</span>
+      </div>
+      <div class="dash-section-body" id="my-orders-list">
+        <div class="empty-state">Siz hali buyurtma bermadingiz</div>
+      </div>
+    </div>
+
+    <!-- Maintenance Report Form -->
+    <div class="dash-section">
+      <div class="dash-section-header">
+        <h2>🔧 Nosozlik haqida xabar berish</h2>
+        <button id="report-issue-btn" class="btn-primary">🔧 Xabar yuborish</button>
+      </div>
+      <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.75rem">Xonangizda biror narsa ishlamayaptimi? Bizga xabar bering:</p>
+      <div class="glass" style="padding: 1rem; border-radius: 12px; margin-bottom: 1rem;">
+        <div class="input-group" style="margin-bottom: 0.75rem;">
+          <label for="issue-desc" style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.25rem; display: block;">Muammo tavsifi</label>
+          <textarea id="issue-desc" rows="3" placeholder="Masalan: Chiroq yonmayapti, kran buzuq..." style="width: 100%; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: var(--text-primary); padding: 0.5rem; font-family: inherit; font-size: 0.85rem; resize: vertical;"></textarea>
+        </div>
+        <div class="input-group" style="margin-bottom: 0.5rem;">
+          <label for="issue-urgency" style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.25rem; display: block;">Shoshilinchlik darajasi</label>
+          <select id="issue-urgency" style="width: 100%; border-radius: 8px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); color: var(--text-primary); padding: 0.5rem; font-family: inherit; font-size: 0.85rem;">
+            <option value="Normal" selected>Normal</option>
+            <option value="Low">Past (Low)</option>
+            <option value="High">Yuqori (High)</option>
+            <option value="Critical">O'ta shoshilinch (Critical)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- My Maintenance Requests -->
+    <div class="dash-section">
+      <div class="dash-section-header">
+        <h2>🛠️ Mening xabarlarim holati</h2>
+        <span class="badge" id="my-issues-count">0 ta</span>
+      </div>
+      <div class="dash-section-body" id="my-issues-list">
+        <div class="empty-state">Hozircha hech qanday nosozlik xabari yuborilmagan</div>
+      </div>
+    </div>
+
+    <!-- Logout -->
+    <div style="text-align:center;padding:1rem">
+      <button id="logout-btn" class="btn-secondary" style="opacity:0.6">🚪 Chiqish</button>
+    </div>
+  </div>
+
+  <script src="shared.js"></script>
+  <script src="guest-dashboard.js"></script>
+</body>
+</html>

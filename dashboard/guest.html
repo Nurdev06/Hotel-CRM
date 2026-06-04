@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GrandStay — Guest Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-mode guest-mode">
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+
+  <!-- Login screen -->
+  <div id="guest-login" class="guest-login-wrap">
+    <div class="guest-login-card glass">
+      <div class="brand">🏨</div>
+      <h2>GrandStay Hotel</h2>
+      <p>Xona raqamingiz va ismingizni kiritib, shaxsiy kabinetingizga kiring</p>
+      <div class="input-group">
+        <label for="gl-room">Xona raqami</label>
+        <input type="number" id="gl-room" placeholder="Masalan: 201" min="101" max="308">
+      </div>
+      <div class="input-group">
+        <label for="gl-name">Mehmon ismi</label>
+        <input type="text" id="gl-name" placeholder="Check-in da kiritilgan ism">
+      </div>
+      <button id="gl-btn" class="btn-primary" style="width:100%">🔑 Kirish</button>
+      <p id="gl-error" class="error-text hidden" style="color:#ef4444;font-size:0.82rem"></p>
+
+      <!-- Occupied rooms helper -->
+      <div id="gl-occupied-help" style="margin-top:1.25rem;border-top:1px solid rgba(255,255,255,0.08);padding-top:0.75rem;">
+        <p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:0.4rem;text-align:center;">Joriy band xonalar (Mehmonlar):</p>
+        <div id="gl-occupied-list" style="display:flex;flex-wrap:wrap;gap:0.35rem;justify-content:center;max-height:100px;overflow-y:auto;">
+          <span style="font-size:0.72rem;color:var(--text-muted)">Yuklanmoqda...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="shared.js"></script>
+  <script src="guest-login.js"></script>
+</body>
+</html>
