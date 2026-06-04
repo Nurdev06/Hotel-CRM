@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HotelOS — Housekeeping</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-mode">
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+
+  <div id="hk-app" class="hidden">
+
+    <!-- Mini Stats -->
+    <div class="mini-stats">
+      <div class="mini-stat accent-amber">
+        <span class="mini-stat-icon">🟡</span>
+        <div>
+          <div class="mini-stat-val" id="hk-dirty">0</div>
+          <div class="mini-stat-lbl">Tozalanishi kerak</div>
+        </div>
+      </div>
+      <div class="mini-stat accent-blue">
+        <span class="mini-stat-icon">🔵</span>
+        <div>
+          <div class="mini-stat-val" id="hk-cleaning">0</div>
+          <div class="mini-stat-lbl">Tozalanmoqda</div>
+        </div>
+      </div>
+      <div class="mini-stat accent-green">
+        <span class="mini-stat-icon">🟢</span>
+        <div>
+          <div class="mini-stat-val" id="hk-clean">0</div>
+          <div class="mini-stat-lbl">Tozalangan</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Housekeeper name -->
+    <div class="hk-name-bar">
+      <label for="hk-name">👤 Housekeeper ismi:</label>
+      <input type="text" id="hk-name" placeholder="Masalan: Aziza" value="">
+    </div>
+
+    <div class="page-grid-2">
+      <!-- Dirty rooms - need cleaning -->
+      <div class="dash-section">
+        <div class="dash-section-header">
+          <h2>🟡 Tozalanishi kerak</h2>
+          <span class="badge" id="dirty-count">0</span>
+        </div>
+        <div class="dash-section-body" id="dirty-list">
+          <div class="empty-state">Barcha xonalar toza ✨</div>
+        </div>
+      </div>
+
+      <!-- Being cleaned -->
+      <div class="dash-section">
+        <div class="dash-section-header">
+          <h2>🔵 Tozalanmoqda</h2>
+          <span class="badge" id="cleaning-count">0</span>
+        </div>
+        <div class="dash-section-body" id="cleaning-list">
+          <div class="empty-state">Hozir tozalanayotgan xona yo'q</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recently cleaned -->
+    <div class="dash-section">
+      <div class="dash-section-header">
+        <h2>🟢 Tozalangan xonalar</h2>
+        <span class="badge" id="clean-count">0</span>
+      </div>
+      <div class="dash-section-body" id="clean-list">
+        <div class="empty-state">Hali bugun tozalangan xona yo'q</div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="shared.js"></script>
+  <script src="housekeeping.js"></script>
+</body>
+</html>

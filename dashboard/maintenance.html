@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HotelOS — Maintenance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-mode">
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+
+  <div id="maint-app" class="hidden">
+
+    <!-- Mini Stats -->
+    <div class="mini-stats">
+      <div class="mini-stat accent-amber">
+        <span class="mini-stat-icon">🟡</span>
+        <div>
+          <div class="mini-stat-val" id="maint-pending">0</div>
+          <div class="mini-stat-lbl">Kutilmoqda</div>
+        </div>
+      </div>
+      <div class="mini-stat accent-blue">
+        <span class="mini-stat-icon">🔵</span>
+        <div>
+          <div class="mini-stat-val" id="maint-assigned">0</div>
+          <div class="mini-stat-lbl">Bajarilmoqda</div>
+        </div>
+      </div>
+      <div class="mini-stat accent-green">
+        <span class="mini-stat-icon">🟢</span>
+        <div>
+          <div class="mini-stat-val" id="maint-resolved">0</div>
+          <div class="mini-stat-lbl">Tuzatildi</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Technician name -->
+    <div class="hk-name-bar">
+      <label for="maint-tech-name">👤 Texnik ismi:</label>
+      <input type="text" id="maint-tech-name" placeholder="Masalan: Ali" value="">
+    </div>
+
+    <div class="page-grid-3">
+      <!-- Pending Issues -->
+      <div class="dash-section">
+        <div class="dash-section-header">
+          <h2>🟡 Kutilmoqda</h2>
+          <span class="badge" id="pending-count">0</span>
+        </div>
+        <div class="dash-section-body" id="pending-list">
+          <div class="empty-state">Muammo yo'q ✨</div>
+        </div>
+      </div>
+
+      <!-- In Progress / Assigned -->
+      <div class="dash-section">
+        <div class="dash-section-header">
+          <h2>🔵 Bajarilmoqda</h2>
+          <span class="badge" id="assigned-count">0</span>
+        </div>
+        <div class="dash-section-body" id="assigned-list">
+          <div class="empty-state">Hozir bajarilayotgan ish yo'q</div>
+        </div>
+      </div>
+
+      <!-- Resolved Issues -->
+      <div class="dash-section">
+        <div class="dash-section-header">
+          <h2>🟢 Yakunlanganlar</h2>
+          <span class="badge" id="resolved-count">0</span>
+        </div>
+        <div class="dash-section-body" id="resolved-list">
+          <div class="empty-state">Bugun tuzatilgan muammolar yo'q</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="shared.js"></script>
+  <script src="maintenance.js"></script>
+</body>
+</html>
