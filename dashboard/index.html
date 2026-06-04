@@ -1,0 +1,206 @@
+`
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HotelOS — Admin Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dark-mode">
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+
+  <!-- Nav bar + auth injected by shared.js -->
+
+  <div id="admin-app" class="hidden">
+
+    <!-- Stats Bar -->
+    <div class="stats-bar" id="stats-bar">
+      <div class="stat-card" data-type="clean">
+        <div class="stat-ring-wrap">
+          <svg class="stat-ring" viewBox="0 0 44 44">
+            <circle class="ring-bg" cx="22" cy="22" r="18" fill="none" stroke-width="3.5" />
+            <circle class="ring-arc ring-clean" id="ring-clean" cx="22" cy="22" r="18" fill="none" stroke-width="3.5"
+              stroke-dasharray="0 113" stroke-linecap="round" />
+          </svg>
+          <span class="stat-emoji">🧹</span>
+        </div>
+        <div class="stat-body">
+          <div class="stat-numbers">
+            <span class="stat-value" id="stat-clean">0</span>
+            <span class="stat-total" id="stat-clean-total">/0</span>
+          </div>
+          <div class="stat-label">Tozalangan xonalar</div>
+          <div class="stat-mini-bar">
+            <div class="stat-mini-fill fill-clean" id="bar-clean" style="width:0%"></div>
+          </div>
+          <div class="stat-pct" id="stat-clean-pct">0%</div>
+        </div>
+      </div>
+      <div class="stat-card" data-type="occupied">
+        <div class="stat-ring-wrap">
+          <svg class="stat-ring" viewBox="0 0 44 44">
+            <circle class="ring-bg" cx="22" cy="22" r="18" fill="none" stroke-width="3.5" />
+            <circle class="ring-arc ring-occupied" id="ring-occupied" cx="22" cy="22" r="18" fill="none"
+              stroke-width="3.5" stroke-dasharray="0 113" stroke-linecap="round" />
+          </svg>
+          <span class="stat-emoji">🛏️</span>
+        </div>
+        <div class="stat-body">
+          <div class="stat-numbers">
+            <span class="stat-value" id="stat-occupied">0</span>
+            <span class="stat-total" id="stat-occupied-total">/0</span>
+          </div>
+          <div class="stat-label">Mehmoni bor xonalar</div>
+          <div class="stat-mini-bar">
+            <div class="stat-mini-fill fill-occupied" id="bar-occupied" style="width:0%"></div>
+          </div>
+          <div class="stat-pct" id="stat-occupied-pct">0%</div>
+        </div>
+      </div>
+      <div class="stat-card" data-type="ok">
+        <div class="stat-ring-wrap">
+          <svg class="stat-ring" viewBox="0 0 44 44">
+            <circle class="ring-bg" cx="22" cy="22" r="18" fill="none" stroke-width="3.5" />
+            <circle class="ring-arc ring-ok" id="ring-ok" cx="22" cy="22" r="18" fill="none" stroke-width="3.5"
+              stroke-dasharray="0 113" stroke-linecap="round" />
+          </svg>
+          <span class="stat-emoji">🔧</span>
+        </div>
+        <div class="stat-body">
+          <div class="stat-numbers">
+            <span class="stat-value" id="stat-ok">0</span>
+            <span class="stat-total" id="stat-ok-total">/0</span>
+          </div>
+          <div class="stat-label">Jihozlar soz</div>
+          <div class="stat-mini-bar">
+            <div class="stat-mini-fill fill-ok" id="bar-ok" style="width:0%"></div>
+          </div>
+          <div class="stat-pct" id="stat-ok-pct">0</div>
+        </div>
+      </div>
+      <div class="stat-card" data-type="available">
+        <div class="stat-ring-wrap">
+          <svg class="stat-ring" viewBox="0 0 44 44">
+            <circle class="ring-bg" cx="22" cy="22" r="18" fill="none" stroke-width="3.5" />
+            <circle class="ring-arc ring-available" id="ring-available" cx="22" cy="22" r="18" fill="none"
+              stroke-width="3.5" stroke-dasharray="0 113" stroke-linecap="round" />
+          </svg>
+          <span class="stat-emoji">✅</span>
+        </div>
+        <div class="stat-body">
+          <div class="stat-numbers">
+            <span class="stat-value" id="stat-available">0</span>
+            <span class="stat-total" id="stat-available-total">/0</span>
+          </div>
+          <div class="stat-label">Bo'sh va tayyor</div>
+          <div class="stat-mini-bar">
+            <div class="stat-mini-fill fill-available" id="bar-available" style="width:0%"></div>
+          </div>
+          <div class="stat-pct" id="stat-available-pct">0</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rooms Section (Full width now, no longer side-by-side with sidebar) -->
+    <section class="rooms-section glass" style="margin-bottom: 1.5rem;">
+      <div class="section-header flex-wrap">
+        <h2>Rooms Inventory</h2>
+        <span class="badge" id="rooms-badge">24 Rooms | 3 Floors</span>
+      </div>
+      <div class="floor-selector-container">
+        <button class="floor-pill active" data-floor="all">All</button>
+        <button class="floor-pill" data-floor="1">FL 1</button>
+        <button class="floor-pill" data-floor="2">FL 2</button>
+        <button class="floor-pill" data-floor="3">FL 3</button>
+      </div>
+      <div class="rooms-grid" id="rooms-grid"></div>
+    </section>
+
+    <!-- Monitors Grid: Room Service, Maintenance, Housekeeping side-by-side -->
+    <div class="monitors-grid" style="margin-bottom: 1.5rem;">
+      <!-- Room Service Monitor -->
+      <section class="panel glass" id="panel-rs">
+        <div class="section-header">
+          <h2>🍽️ Room Service</h2>
+          <span class="badge" id="rs-badge">0</span>
+        </div>
+        <div class="panel-content" id="rs-list"></div>
+      </section>
+
+      <!-- Maintenance Monitor -->
+      <section class="panel glass" id="panel-maint">
+        <div class="section-header">
+          <h2>🔧 Maintenance</h2>
+          <span class="badge" id="maint-badge">0</span>
+        </div>
+        <div class="panel-content" id="maint-list"></div>
+      </section>
+
+      <!-- Housekeeping Monitor -->
+      <section class="panel glass" id="panel-hk">
+        <div class="section-header">
+          <h2>🧹 Housekeeping</h2>
+          <span class="badge" id="hk-badge">0</span>
+        </div>
+        <div class="panel-content" id="hk-list"></div>
+      </section>
+    </div>
+
+    <!-- Event Log -->
+    <section class="event-log-section glass">
+      <!-- Terminal header -->
+      <div class="terminal-header">
+        <div class="terminal-dots">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+        </div>
+        <div class="terminal-title">broker-live-event-stream.log</div>
+        <div class="terminal-status-badge">
+          <span class="pulse-indicator"></span> LIVE
+        </div>
+      </div>
+      <!-- Controls bar -->
+      <div class="terminal-controls">
+        <div class="control-group">
+          <label for="log-filter">Filter:</label>
+          <select id="log-filter" class="log-filter-select">
+            <option value="all">Hamma eventlar</option>
+            <option value="reception">Reception (Check-in/out)</option>
+            <option value="room_service">Room Service</option>
+            <option value="maintenance">Maintenance</option>
+            <option value="housekeeping">Housekeeping</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label style="display:flex;align-items:center;gap:0.35rem;cursor:pointer;user-select:none;">
+            <input type="checkbox" id="auto-scroll-chk" checked style="cursor:pointer;">
+            <span>Auto-scroll</span>
+          </label>
+        </div>
+        <div class="control-group" style="margin-left: auto;">
+          <span class="log-counter" id="log-counter">0 ta hodisa</span>
+          <button id="clear-logs" class="btn-terminal-action">Clear</button>
+        </div>
+      </div>
+      <!-- Terminal body -->
+      <div class="event-terminal" id="event-terminal">
+      </div>
+    </section>
+
+  </div>
+
+  <script src="shared.js"></script>
+  <script src="admin.js"></script>
+</body>
+
+</html>
